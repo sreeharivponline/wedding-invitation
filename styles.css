@@ -277,7 +277,7 @@ h2 {
     transition: all 0.3s ease;
     text-align: center;
     width: 100%;
-    max-width: 350px;
+    max-width: 600px;
 }
 
 .couple-card:hover {
@@ -287,59 +287,50 @@ h2 {
 
 .couple-illustration {
     position: relative;
-    width: 120px;
-    height: 120px;
-    margin: 0 auto 1.5rem auto;
-    background: linear-gradient(135deg, #f8f0e8 0%, #f2d5c4 100%);
-    border-radius: 50%;
+    width: 500px;
+    height: 500px;
+    margin: 0 auto 2rem auto;
     display: flex;
     align-items: center;
     justify-content: center;
-    border: 4px solid #a0522d;
+    /* No frame, no borders, no background, completely frameless */
 }
 
-.bride-illustration {
-    background: linear-gradient(135deg, #ffeef8 0%, #fff5f5 100%);
-    border-color: #ff6b8a;
+.couple-photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 0;
+    box-shadow: none;
+    border: none;
+    animation: floatGentle 4s ease-in-out infinite;
+    transition: transform 0.3s ease;
 }
 
-.groom-illustration {
-    background: linear-gradient(135deg, #f0f8ff 0%, #e6f3ff 100%);
-    border-color: #4a90e2;
-}
-
-.floral-frame {
-    position: absolute;
-    top: -10px;
-    right: -10px;
-    font-size: 1.5rem;
-    animation: rotate 4s linear infinite;
-}
-
-.couple-initial {
-    font-family: 'Dancing Script', cursive;
-    font-size: 3rem;
-    font-weight: 700;
-    color: #a0522d;
+.couple-photo:hover {
+    transform: scale(1.05);
 }
 
 .couple-name {
     font-family: 'Dancing Script', cursive;
-    font-size: 2.5rem;
+    font-size: 3rem;
     color: #a0522d;
     margin-bottom: 0.5rem;
 }
 
 .couple-title {
-    font-size: 1.1rem;
+    font-size: 1.3rem;
     color: #8d6e63;
-    margin-bottom: 1rem;
+    margin-bottom: 1.5rem;
     font-style: italic;
 }
 
 .family-details {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
     text-align: left;
-    padding: 1rem;
+    padding: 1.5rem;
     background: #fdfbf9;
     border-radius: 10px;
     margin-top: 1rem;
@@ -678,44 +669,39 @@ h2 {
 
 .creator-info {
     text-align: center;
+    opacity: 0.7;
 }
 
-.creator-info h4 {
-    font-size: 1.3rem;
-    margin-bottom: 1rem;
-    color: #f8c9a9;
-}
-
-.creator-info p {
-    font-size: 1.1rem;
+.creator-credit {
+    font-size: 0.75rem;
     color: #d2b7a3;
-    margin-bottom: 1rem;
+    margin-bottom: 0.5rem;
 }
 
 .social-links {
     display: flex;
     justify-content: center;
-    gap: 1rem;
+    gap: 0.5rem;
 }
 
 .social-link {
     display: inline-flex;
     align-items: center;
-    gap: 0.5rem;
-    color: #f8c9a9;
+    gap: 0.3rem;
+    color: #d2b7a3;
     text-decoration: none;
-    padding: 0.5rem 1rem;
-    border-radius: 20px;
+    padding: 0.3rem 0.5rem;
+    border-radius: 15px;
     background: rgba(248, 201, 169, 0.1);
     transition: all 0.3s ease;
-    font-size: 0.9rem;
-    font-weight: 500;
+    font-size: 0.7rem;
+    font-weight: 400;
 }
 
 .social-link:hover {
-    background: rgba(248, 201, 169, 0.2);
-    transform: translateY(-2px);
-    color: #f8c9a9;
+    background: rgba(248, 201, 169, 0.15);
+    transform: translateY(-1px);
+    color: #d2b7a3;
     text-decoration: none;
 }
 
@@ -786,6 +772,11 @@ h2 {
 @keyframes float {
     0%, 100% { transform: translateY(0px); }
     50% { transform: translateY(-10px); }
+}
+
+@keyframes floatGentle {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-8px); }
 }
 
 @keyframes heartBeat {
@@ -882,21 +873,18 @@ h2 {
     }
     
     .couple-illustration {
-        width: 100px;
-        height: 100px;
-    }
-    
-    .couple-initial {
-        font-size: 2.5rem;
+        width: 350px;
+        height: 350px;
     }
     
     .couple-name {
-        font-size: 2rem;
+        font-size: 2.5rem;
     }
     
-    .heart-divider {
-        order: 2;
-        margin: 1rem 0;
+    .family-details {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+        padding: 1rem;
     }
     
     .celebration-grid, .venues-grid {
@@ -996,13 +984,14 @@ h2 {
     }
     
     .social-links {
-        flex-direction: column;
+        flex-direction: row;
         align-items: center;
+        gap: 0.3rem;
     }
     
     .social-link {
-        padding: 0.4rem 0.8rem;
-        font-size: 0.8rem;
+        padding: 0.2rem 0.4rem;
+        font-size: 0.6rem;
     }
     
     .back-to-top {
@@ -1028,16 +1017,12 @@ h2 {
     }
     
     .couple-illustration {
-        width: 80px;
-        height: 80px;
-    }
-    
-    .couple-initial {
-        font-size: 2rem;
+        width: 300px;
+        height: 300px;
     }
     
     .couple-name {
-        font-size: 1.8rem;
+        font-size: 2rem;
     }
     
     .celebration-card, .venue-card {
