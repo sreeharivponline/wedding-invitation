@@ -1,3 +1,47 @@
+// Countdown Timer
+function updateCountdown() {
+    // Wedding date: December 14, 2025 at 9:30 AM (Muhurtham time)
+    const weddingDate = new Date('2025-12-14T09:30:00').getTime();
+    const now = new Date().getTime();
+    const distance = weddingDate - now;
+
+    // Time calculations
+    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+    // Update the HTML
+    const daysElement = document.getElementById('days');
+    const hoursElement = document.getElementById('hours');
+    const minutesElement = document.getElementById('minutes');
+    const secondsElement = document.getElementById('seconds');
+
+    if (daysElement) daysElement.textContent = days >= 0 ? days : 0;
+    if (hoursElement) hoursElement.textContent = hours >= 0 ? hours : 0;
+    if (minutesElement) minutesElement.textContent = minutes >= 0 ? minutes : 0;
+    if (secondsElement) secondsElement.textContent = seconds >= 0 ? seconds : 0;
+
+    // If the countdown is finished
+    if (distance < 0) {
+        const countdownContainer = document.querySelector('.countdown-container');
+        if (countdownContainer) {
+            countdownContainer.innerHTML = `
+                <div class="countdown-title">🎉 The Wedding Day Has Arrived! 🎉</div>
+                <div style="font-family: 'Dancing Script', cursive; font-size: 2rem; color: #a0522d; margin-top: 1rem;">
+                    Congratulations Divya & Harikrishnan!
+                </div>
+            `;
+        }
+    }
+}
+
+// Update countdown every second
+setInterval(updateCountdown, 1000);
+
+// Initialize countdown on page load
+document.addEventListener('DOMContentLoaded', updateCountdown);
+
 // Smooth scrolling for navigation links
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
@@ -12,15 +56,54 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-// Add some interactive effects
+// Navigation visibility and scroll effects
 window.addEventListener('scroll', function() {
     const navbar = document.querySelector('.navbar');
-    if (navbar) {
-        if (window.scrollY > 100) {
-            navbar.style.background = 'rgba(255, 255, 255, 0.98)';
+    const heroSection = document.querySelector('.hero');
+    const backToTopBtn = document.querySelector('.back-to-top');
+    
+    if (navbar && heroSection) {
+        const heroHeight = heroSection.offsetHeight;
+        const scrollPosition = window.scrollY;
+        
+        // Hide navbar when in hero section, show when scrolled past it
+        if (scrollPosition < heroHeight - 100) {
+            navbar.style.transform = 'translateY(-100%)';
+            navbar.style.opacity = '0';
         } else {
-            navbar.style.background = 'rgba(255, 255, 255, 0.95)';
+            navbar.style.transform = 'translateY(0)';
+            navbar.style.opacity = '1';
+            
+            // Change background opacity based on scroll
+            if (scrollPosition > heroHeight) {
+                navbar.style.background = 'rgba(255, 255, 255, 0.98)';
+            } else {
+                navbar.style.background = 'rgba(255, 255, 255, 0.95)';
+            }
         }
+        
+        // Show/hide back to top button
+        if (backToTopBtn) {
+            if (scrollPosition > heroHeight / 2) {
+                backToTopBtn.classList.add('visible');
+            } else {
+                backToTopBtn.classList.remove('visible');
+            }
+        }
+    }
+});
+
+// Back to top button functionality
+document.addEventListener('DOMContentLoaded', function() {
+    const backToTopBtn = document.querySelector('.back-to-top');
+    
+    if (backToTopBtn) {
+        backToTopBtn.addEventListener('click', function() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
     }
 });
 
