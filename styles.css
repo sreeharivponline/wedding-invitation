@@ -672,6 +672,8 @@ h2 {
 .creator-info {
     text-align: center;
     opacity: 0.7;
+    margin-top: 2rem;
+    padding-bottom: 1rem;
 }
 
 .creator-credit {
