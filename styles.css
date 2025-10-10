@@ -1008,3 +1008,55 @@ h2 {
         letter-spacing: 0px;
     }
 }
+
+/* Touch Effects */
+.touch-effect {
+    position: fixed;
+    pointer-events: none;
+    z-index: 10000;
+    user-select: none;
+    font-size: 20px;
+}
+
+@keyframes sparkle {
+    0%, 100% { opacity: 0; transform: scale(0); }
+    50% { opacity: 1; transform: scale(1); }
+}
+
+/* Enhance button interactions */
+.cta-button {
+    position: relative;
+    overflow: hidden;
+}
+
+.cta-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(160, 82, 45, 0.3);
+}
+
+.cta-button:active {
+    transform: translateY(-1px);
+    transition: transform 0.1s ease;
+}
+
+/* Add gentle pulse animation for interactive elements */
+.celebration-card:hover {
+    animation: gentle-pulse 2s infinite;
+}
+
+@keyframes gentle-pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.02); }
+}
+
+/* Mobile touch feedback for touch effects */
+@media (max-width: 768px) {
+    .touch-effect {
+        font-size: 16px;
+    }
+    
+    .cta-button:active {
+        transform: scale(0.95);
+        transition: transform 0.1s ease;
+    }
+}
