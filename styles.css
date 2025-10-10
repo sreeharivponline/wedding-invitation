@@ -85,11 +85,13 @@ body {
 }
 
 .wedding-date {
-    font-family: 'Cormorant Garamond', serif;
+    font-family: 'Georgia', 'Times New Roman', serif;
     font-size: 2rem;
     margin-bottom: 1rem;
-    font-weight: 600;
+    font-weight: 300;
     color: #8d6e63;
+    text-align: center;
+    letter-spacing: 0.5px;
 }
 
 .date-malayalam {
@@ -175,6 +177,7 @@ body {
     font-size: 1.1rem;
     transition: all 0.3s ease;
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+    margin-bottom: 3rem;
 }
 
 .cta-button:hover {
@@ -634,6 +637,19 @@ h2 {
     color: #d2b7a3;
 }
 
+.wedding-quote {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+    color: #f8c9a9;
+    font-style: italic;
+    margin: 1.5rem 0;
+    padding: 1rem;
+    background: rgba(248, 201, 169, 0.1);
+    border-radius: 10px;
+    border-left: 4px solid #f8c9a9;
+    text-align: center;
+}
+
 .contact-info h4 {
     font-size: 1.3rem;
     margin-bottom: 1rem;
@@ -658,6 +674,57 @@ h2 {
 
 .contact-person a:hover {
     text-decoration: underline;
+}
+
+.creator-info {
+    text-align: center;
+}
+
+.creator-info h4 {
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+    color: #f8c9a9;
+}
+
+.creator-info p {
+    font-size: 1.1rem;
+    color: #d2b7a3;
+    margin-bottom: 1rem;
+}
+
+.social-links {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.social-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #f8c9a9;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    background: rgba(248, 201, 169, 0.1);
+    transition: all 0.3s ease;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.social-link:hover {
+    background: rgba(248, 201, 169, 0.2);
+    transform: translateY(-2px);
+    color: #f8c9a9;
+    text-decoration: none;
+}
+
+.social-link.linkedin:hover {
+    color: #0077b5;
+}
+
+.social-link.instagram:hover {
+    color: #e4405f;
 }
 
 .footer-bottom {
@@ -922,6 +989,22 @@ h2 {
         font-size: 2rem;
     }
     
+    .wedding-quote {
+        font-size: 1rem;
+        padding: 0.8rem;
+        margin: 1rem 0;
+    }
+    
+    .social-links {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .social-link {
+        padding: 0.4rem 0.8rem;
+        font-size: 0.8rem;
+    }
+    
     .back-to-top {
         width: 45px;
         height: 45px;
@@ -1006,57 +1089,5 @@ h2 {
     .countdown-label {
         font-size: 0.6rem;
         letter-spacing: 0px;
-    }
-}
-
-/* Touch Effects */
-.touch-effect {
-    position: fixed;
-    pointer-events: none;
-    z-index: 10000;
-    user-select: none;
-    font-size: 20px;
-}
-
-@keyframes sparkle {
-    0%, 100% { opacity: 0; transform: scale(0); }
-    50% { opacity: 1; transform: scale(1); }
-}
-
-/* Enhance button interactions */
-.cta-button {
-    position: relative;
-    overflow: hidden;
-}
-
-.cta-button:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 8px 25px rgba(160, 82, 45, 0.3);
-}
-
-.cta-button:active {
-    transform: translateY(-1px);
-    transition: transform 0.1s ease;
-}
-
-/* Add gentle pulse animation for interactive elements */
-.celebration-card:hover {
-    animation: gentle-pulse 2s infinite;
-}
-
-@keyframes gentle-pulse {
-    0%, 100% { transform: scale(1); }
-    50% { transform: scale(1.02); }
-}
-
-/* Mobile touch feedback for touch effects */
-@media (max-width: 768px) {
-    .touch-effect {
-        font-size: 16px;
-    }
-    
-    .cta-button:active {
-        transform: scale(0.95);
-        transition: transform 0.1s ease;
     }
 }
