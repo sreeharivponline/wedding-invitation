@@ -61,6 +61,8 @@ window.addEventListener('scroll', function() {
     const navbar = document.querySelector('.navbar');
     const heroSection = document.querySelector('.hero');
     const backToTopBtn = document.querySelector('.back-to-top');
+    const footer = document.querySelector('.footer');
+    const creatorInfo = document.querySelector('.creator-info');
     
     if (navbar && heroSection) {
         const heroHeight = heroSection.offsetHeight;
@@ -89,6 +91,19 @@ window.addEventListener('scroll', function() {
             } else {
                 backToTopBtn.classList.remove('visible');
             }
+        }
+    }
+    
+    // Show credits bar when footer is reached
+    if (footer && creatorInfo) {
+        const footerRect = footer.getBoundingClientRect();
+        const windowHeight = window.innerHeight;
+        
+        // Show credits when footer is visible (when footer top is less than window height)
+        if (footerRect.top <= windowHeight) {
+            creatorInfo.classList.add('visible');
+        } else {
+            creatorInfo.classList.remove('visible');
         }
     }
 });
