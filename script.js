@@ -94,15 +94,26 @@ window.addEventListener('scroll', function() {
         }
     }
     
-    // Show credits bar when footer is reached
+    // Show credits bar when footer is reached with delay
     if (footer && creatorInfo) {
         const footerRect = footer.getBoundingClientRect();
         const windowHeight = window.innerHeight;
         
         // Show credits when footer is visible (when footer top is less than window height)
         if (footerRect.top <= windowHeight) {
-            creatorInfo.classList.add('visible');
+            // Add delay before showing credits
+            if (!creatorInfo.showTimeout) {
+                creatorInfo.showTimeout = setTimeout(() => {
+                    creatorInfo.classList.add('visible');
+                    creatorInfo.showTimeout = null;
+                }, 800); // 800ms delay
+            }
         } else {
+            // Clear timeout and hide immediately when scrolling away from footer
+            if (creatorInfo.showTimeout) {
+                clearTimeout(creatorInfo.showTimeout);
+                creatorInfo.showTimeout = null;
+            }
             creatorInfo.classList.remove('visible');
         }
     }
